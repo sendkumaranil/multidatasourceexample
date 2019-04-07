@@ -3,12 +3,11 @@ package com.multids.example.app.client;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.multids.example.app.entities.Book;
 import com.multids.example.app.service.BookService;
+import com.multids.example.app.utils.Client;
 
-@Component
+@Client
 public class BookClient {
 
 	@Autowired
