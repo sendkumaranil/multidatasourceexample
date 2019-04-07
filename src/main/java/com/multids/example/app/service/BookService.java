@@ -2,11 +2,8 @@ package com.multids.example.app.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.multids.example.app.entities.Book;
 
-@Service
 public interface BookService {
 
 	public Book getBookById(String bookId);

@@ -3,7 +3,6 @@ package com.multids.example.app.config;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
 import org.springframework.validation.Validator;
 
 import com.multids.example.app.validator.DataSourcePropertyValidator;

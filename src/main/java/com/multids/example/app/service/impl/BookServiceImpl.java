@@ -2,57 +2,57 @@ package com.multids.example.app.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.multids.example.app.dao.BookDao;
 import com.multids.example.app.entities.Book;
 import com.multids.example.app.service.BookService;
 
+@Service
 public class BookServiceImpl implements BookService {
 
+	@Autowired
+	private BookDao bookDao;
+	
 	@Override
 	public Book getBookById(String bookId) {
-		// TODO Auto-generated method stub
-		return null;
+		return bookDao.getBookById(bookId);
 	}
 
 	@Override
 	public List<Book> getAllBooks() {
-		// TODO Auto-generated method stub
-		return null;
+		return bookDao.getAllBooks();
 	}
 
 	@Override
 	public List<Book> getBookByName(String bookName) {
-		// TODO Auto-generated method stub
-		return null;
+		return bookDao.getBookByName(bookName);
 	}
 
 	@Override
 	public List<Book> getBookBuAuthor(String author) {
-		// TODO Auto-generated method stub
-		return null;
+		return bookDao.getBookBuAuthor(author);
 	}
 
 	@Override
 	public List<Book> getBookByPublisher(String publisher) {
-		// TODO Auto-generated method stub
-		return null;
+		return bookDao.getBookByPublisher(publisher);
 	}
 
 	@Override
 	public void createBook(Book book) {
-		// TODO Auto-generated method stub
-		
+		bookDao.createBook(book);
 	}
 
 	@Override
 	public void updateBook(Book book) {
-		// TODO Auto-generated method stub
-		
+		bookDao.updateBook(book);
 	}
 
 	@Override
 	public void deleteBook(String bookId) {
-		// TODO Auto-generated method stub
-		
+		bookDao.deleteBook(bookId);
 	}
 
 }
