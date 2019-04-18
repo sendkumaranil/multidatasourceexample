@@ -1,5 +1,6 @@
 package com.multids.example.app.config;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -73,7 +74,7 @@ public class DataSourceConfiguration {
 	}
 	
 	@Bean
-	public JdbcTemplate jdbcTemplate(@Qualifier("h2dbDS") final DataSource dataSource) {
+	public JdbcTemplate jdbcTemplate(@Qualifier("h2dbDS") final DataSource dataSource) throws SQLException {
 		return new JdbcTemplate(dataSource);
 	}
 	
