@@ -44,7 +44,7 @@ public class DataSourceConfiguration {
 	@Bean("mongoDS")
 	public MongoDbFactory mongoDataSource() {
 		
-		return new SimpleMongoDbFactory(new MongoClient(mongodataSourceProperties.getHost(),mongodataSourceProperties.getPort()), "admin");
+		return new SimpleMongoDbFactory(new MongoClient(mongodataSourceProperties.getHost(),mongodataSourceProperties.getPort()), "projects");
 	}
 	
 	@Bean("sessionFactoryBean")
