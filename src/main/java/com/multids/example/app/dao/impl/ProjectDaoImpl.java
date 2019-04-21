@@ -2,10 +2,11 @@ package com.multids.example.app.dao.impl;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import com.multids.example.app.dao.ProjectDao;
@@ -24,37 +25,41 @@ public class ProjectDaoImpl implements ProjectDao {
 
 	@Override
 	public Project getProjectById(String projectId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return mongoTemplate.findById(projectId, Project.class, "projectDetails");
 	}
 
 	@Override
 	public Project getProjectByTeamId(String teamId) {
-		// TODO Auto-generated method stub
-		return null;
+		return mongoTemplate.findOne(Query.query(Criteria.where("team.teamId").is(teamId)), Project.class,"projectDetails");
 	}
 
 	@Override
-	public Project getProjectByDateRange(Date startDate, Date endDate) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Project> getProjectByDateRange(Date startDate, Date endDate) {
+		Query query=new Query();
+		query.addCriteria(Criteria.where("startDate").lt(endDate).gt(startDate));
+		return mongoTemplate.find(query, Project.class, "projectDetails");
 	}
 
 	@Override
 	public List<Project> getProjects() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Project> projects=mongoTemplate.findAll(Project.class, "projectDetails");;
+		return projects;
 	}
 
 	@Override
 	public void updateProject(Project project) {
-		// TODO Auto-generated method stub
-
+		Query query=new Query();
+		query.addCriteria(Criteria.where("_id").is(project.getProjectId()));
+		Update update=new Update();
+		update.set("team", project.getTeam());
+		mongoTemplate.updateFirst(query, update, "projectDetails");
 	}
 
 	@Override
 	public void deleteProject(String projectId) {
-		// TODO Auto-generated method stub
-
+		Query query=new Query();
+		query.addCriteria(Criteria.where("_id").is(projectId));
+		mongoTemplate.remove(query, Project.class, "projectDetails");
 	}
 }

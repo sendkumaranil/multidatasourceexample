@@ -98,14 +98,33 @@ public class MultiDataSourceExampleApp implements CommandLineRunner{
 		CreateProjectData prjData=new CreateProjectData();
 		
 		Project project=new Project();
-		project.setProjectId("PROJ10001");
-		project.setProjectTitle("Project Management System");
-		project.setProjectDescription("Manage New Project and Team and Task");
+		project.setProjectId("PROJ10003");
+		project.setProjectTitle("Enterprise Data Platform Interface");
+		project.setProjectDescription("Provide data on demand");
 		project.setStartDate(new Date());
 		project.setProjectManager(prjData.createManager());
 		project.setTeam(prjData.createTeam());
 		
-		projectClient.createNewProject(project);
+		//projectClient.createNewProject(project);
 		
+		projectClient.printProject("PROJ10001");
+		
+		projectClient.printProjectByTeamId("T10002");
+		
+		projectClient.printProjectByDateRange("2019-04-01", "2019-04-30");
+		
+		projectClient.printProjects();
+		
+		Project project2=new Project();
+		project2.setProjectId("PROJ10002");
+		project2.setTeam(prjData.updateTeam());
+		
+		projectClient.updateProject(project2);
+		
+		projectClient.printProject("PROJ10002");
+		
+		projectClient.deleteProject("PROJ10003");
+		
+		projectClient.printProjects();
 	}
 }

@@ -20,8 +20,8 @@ public class CreateProjectData {
 			employees.add(createDeveloper2());
 			
 			Team team=new Team();
-			team.setTeamId("T10001");
-			team.setTeamName("Avengers Coders");
+			team.setTeamId("T10002");
+			team.setTeamName("SuperMario Coders");
 			team.setEmployees(employees);
 		
 			return team;
@@ -162,5 +162,20 @@ public class CreateProjectData {
 			
 			return developer2;
 			
+		}
+	
+		public Team updateTeam() {
+			
+			List<Employee> employees=new ArrayList<>();
+			employees.add(createManager());
+			employees.add(createTeamLead());
+			employees.add(seniorDeveloper());
+			
+			Team team=new Team();
+			team.setTeamId("T10002");
+			team.setTeamName("SuperMario Coders");
+			team.setEmployees(employees);
+		
+			return team;
 		}
 }

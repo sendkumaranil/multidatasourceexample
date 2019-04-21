@@ -23,38 +23,32 @@ public class ProjectServiceImpl implements ProjectService {
 
 	@Override
 	public Project getProjectById(String projectId) {
-		// TODO Auto-generated method stub
-		return null;
+		return projectDao.getProjectById(projectId);
 	}
 
 	@Override
 	public Project getProjectByTeamId(String teamId) {
-		// TODO Auto-generated method stub
-		return null;
+		return projectDao.getProjectByTeamId(teamId);
 	}
 
 	@Override
-	public Project getProjectByDateRange(Date startDate, Date endDate) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Project> getProjectByDateRange(Date startDate, Date endDate) {
+		return projectDao.getProjectByDateRange(startDate, endDate);
 	}
 
 	@Override
 	public List<Project> getProjects() {
-		// TODO Auto-generated method stub
-		return null;
+		return projectDao.getProjects();
 	}
 
 	@Override
 	public void updateProject(Project project) {
-		// TODO Auto-generated method stub
-
+		projectDao.updateProject(project);
 	}
 
 	@Override
 	public void deleteProject(String projectId) {
-		// TODO Auto-generated method stub
-
+		projectDao.deleteProject(projectId);
 	}
 
 }
